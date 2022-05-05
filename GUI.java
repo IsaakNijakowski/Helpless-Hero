@@ -28,31 +28,30 @@ public class GUI {
 
     int midTextSize = 30;
     JPanel leftPanel = new JPanel();
-    JPanel leftStatPanel = new JPanel();
+    StackedPanel leftStatPanel = new StackedPanel(10, 10, FlowLayout.LEFT);
     JLabel leftArmorText = new ILabel("Armor: Blue", midTextSize, true, Color.blue);
     JLabel leftHealthText = new ILabel("Health: Red", midTextSize, true, Color.red);
     JLabel leftDamageText = new ILabel("Damage: Black", midTextSize, true, Color.black);
     JLabel leftMagicText = new ILabel("Magic Damage: Purple", midTextSize, true, Color.magenta);
     JLabel leftDelayText = new ILabel("Delay: Green", midTextSize, true, Color.green);
     JLabel leftGoldText = new ILabel("Gold: Yellow", midTextSize, true, Color.yellow);
-    JPanel leftImagePanel = new JPanel();
-    JPanel leftImageTitle = new JPanel();
-    JLabel leftNameText = new JLabel("Name");
+    StackedPanel leftImagePanel = new StackedPanel(10, 10, FlowLayout.CENTER);
+    Box leftImageTitle = Box.createHorizontalBox();
+    JLabel leftNameText = new JLabel("poggers200040");
     JLabel leftLevelText = new JLabel("Level: 0");
-    JLabel leftImage = new JLabel(getPlaceHolderImage(150, 300));
+    JLabel leftImage = new JLabel(getPlaceHolderImage(200, 300));
     JProgressBar leftArmorBar = new JProgressBar();
     JProgressBar leftHealthBar = new JProgressBar();
     JProgressBar leftDelayBar = new JProgressBar();
     JLabel leftDamageNumbers = new JLabel("-0");
 
     JPanel rightPanel = new JPanel();
-    JPanel rightImagePanel = new JPanel();
+    StackedPanel rightImagePanel = new StackedPanel(10, 10, FlowLayout.RIGHT);
     JPanel rightStatPanel = new JPanel();
 
-    StackedPanel stacked = new StackedPanel(50, 50, FlowLayout.CENTER);
-    JLabel text1 = new JLabel("text1");
-    JLabel text2 = new JLabel("text2222222222");
-    JLabel text3 = new JLabel("text3");
+    JPanel panel;
+    Box horizontalBox;
+
 
     public GUI() {
         // Window initialization
@@ -115,9 +114,9 @@ public class GUI {
         // LEFT MIDDLE PANEL
         leftPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         leftPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 50, 0));
+
         leftStatPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         leftStatPanel.setLayout(new BoxLayout(leftStatPanel, BoxLayout.Y_AXIS));
-        leftStatPanel.add(Box.createVerticalStrut(100));
         leftStatPanel.add(leftArmorText);
         leftStatPanel.add(leftHealthText);
         leftStatPanel.add(leftDamageText);
@@ -125,15 +124,21 @@ public class GUI {
         leftStatPanel.add(leftDelayText);
         leftStatPanel.add(leftGoldText);
         leftPanel.add(leftStatPanel);
-        leftImagePanel.setMaximumSize(new Dimension(150, 700));
+        
         leftImagePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         leftImagePanel.setLayout(new BoxLayout(leftImagePanel, BoxLayout.Y_AXIS));
+        leftNameText.setAlignmentX(Component.LEFT_ALIGNMENT);
         leftImageTitle.add(leftNameText);
+        leftImageTitle.add(Box.createHorizontalStrut(90));
         leftImageTitle.add(leftLevelText);
         leftImagePanel.add(leftImageTitle);
         leftImagePanel.add(leftImage);
+        //leftArmorBar.setSize(new Dimension(200, 200));
+        leftArmorBar.setPreferredSize(new Dimension( 200,25));
         leftImagePanel.add(leftArmorBar);
+        leftHealthBar.setPreferredSize(new Dimension( 200,25));
         leftImagePanel.add(leftHealthBar);
+        leftDelayBar.setPreferredSize(new Dimension( 200,25));
         leftImagePanel.add(leftDelayBar);
         leftImagePanel.add(leftDamageNumbers);
         leftPanel.add(leftImagePanel);
@@ -143,11 +148,6 @@ public class GUI {
         rightPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         rightPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 50, 0));
         midPanel.add(rightPanel);
-        
-        stacked.add(text1);
-        stacked.add(text2);
-        stacked.add(text3);
-        midPanel.add(stacked);
         
         
     }

@@ -30,7 +30,7 @@ public class StackedPanel extends JPanel {
     public Component add(Component comp) {
         super.remove(bottomStrut);
         JPanel panel = new JPanel();
-        panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        //panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         panel.setLayout(new FlowLayout(align, hgap, vgap));
         panel.add(comp);
         super.add(panel);
