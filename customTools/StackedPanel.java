@@ -1,12 +1,10 @@
 package customTools;
 
-import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import java.awt.Component;
 import java.awt.FlowLayout;
-import java.awt.Color;
 
 public class StackedPanel extends JPanel {
     private BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -30,7 +28,6 @@ public class StackedPanel extends JPanel {
     public Component add(Component comp) {
         super.remove(bottomStrut);
         JPanel panel = new JPanel();
-        //panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         panel.setLayout(new FlowLayout(align, hgap, vgap));
         panel.add(comp);
         super.add(panel);

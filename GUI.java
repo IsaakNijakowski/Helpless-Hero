@@ -74,8 +74,10 @@ public class GUI {
     JButton sheild2 = new JButton(getPlaceHolderImage(buttonSize, buttonSize));
     JButton sheild3 = new JButton(getPlaceHolderImage(buttonSize, buttonSize));
 
-    JPanel panel;
-    Box horizontalBox;
+    JPanel baseLeftPanel = new JPanel();
+    JPanel baseRightPanel = new JPanel();
+    JButton testTutorial = new JButton("test tutorial");
+    JButton testLevelUp = new JButton("test level up");
 
 
     public GUI() {
@@ -128,8 +130,9 @@ public class GUI {
         
         // MID PANEL
         midPanel.setMaximumSize(new Dimension(1280, 450));
+        midPanel.add(baseLeftPanel);
+        midPanel.add(baseRightPanel);
         // LEFT MIDDLE PANEL
-        
         leftPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 50, 0));
 
         leftStatPanel.setLayout(new BoxLayout(leftStatPanel, BoxLayout.Y_AXIS));
@@ -154,7 +157,7 @@ public class GUI {
         leftImagePanel.add(leftDelayBar);
         leftImagePanel.add(leftDamageNumbers);
         leftPanel.add(leftImagePanel);
-        midPanel.add(leftPanel);
+        baseLeftPanel.add(leftPanel);
 
         // RIGHT MIDDLE PANEL
         rightPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 50, 0));
@@ -181,7 +184,7 @@ public class GUI {
         rightStatPanel.add(rightDelayText);
         rightStatPanel.add(rightGoldText);
         rightPanel.add(rightStatPanel);
-        midPanel.add(rightPanel);
+        baseRightPanel.add(rightPanel);
         
         // BOT PANEL
         botPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
@@ -201,7 +204,12 @@ public class GUI {
         botPanel.add(sheild2);
         botPanel.add(sheild3);
 
-        //window.pack();
+        // TEST BUTTONS
+        botPanel.add(testTutorial);
+        botPanel.add(testLevelUp);
+
+        
+
         window.setLocationRelativeTo(null);
         window.setVisible(true);
     }
