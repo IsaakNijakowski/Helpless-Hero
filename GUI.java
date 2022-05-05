@@ -26,28 +26,53 @@ public class GUI {
     JLabel killNumberText = new JLabel("Kills: 2");
     JLabel deathNumberText = new JLabel("Deaths: 3");
 
-    int midTextSize = 30;
+    int midTextSize = 20;
     JPanel leftPanel = new JPanel();
-    StackedPanel leftStatPanel = new StackedPanel(10, 10, FlowLayout.LEFT);
+    StackedPanel leftStatPanel = new StackedPanel(10, 0, FlowLayout.LEFT);
     JLabel leftArmorText = new ILabel("Armor: Blue", midTextSize, true, Color.blue);
     JLabel leftHealthText = new ILabel("Health: Red", midTextSize, true, Color.red);
     JLabel leftDamageText = new ILabel("Damage: Black", midTextSize, true, Color.black);
     JLabel leftMagicText = new ILabel("Magic Damage: Purple", midTextSize, true, Color.magenta);
     JLabel leftDelayText = new ILabel("Delay: Green", midTextSize, true, Color.green);
     JLabel leftGoldText = new ILabel("Gold: Yellow", midTextSize, true, Color.yellow);
-    StackedPanel leftImagePanel = new StackedPanel(10, 10, FlowLayout.CENTER);
+    StackedPanel leftImagePanel = new StackedPanel(10, 0, FlowLayout.CENTER);
     Box leftImageTitle = Box.createHorizontalBox();
     JLabel leftNameText = new JLabel("poggers200040");
     JLabel leftLevelText = new JLabel("Level: 0");
-    JLabel leftImage = new JLabel(getPlaceHolderImage(200, 300));
-    JProgressBar leftArmorBar = new JProgressBar();
-    JProgressBar leftHealthBar = new JProgressBar();
-    JProgressBar leftDelayBar = new JProgressBar();
+    JLabel leftImage = new JLabel(getPlaceHolderImage(250, 250));
+    JProgressBar leftArmorBar = new IBar("Armor",200,25,Color.blue);
+    JProgressBar leftHealthBar = new IBar("Health", 200, 25, Color.red);
+    JProgressBar leftDelayBar = new IBar("Delay", 200, 25, Color.green);
     JLabel leftDamageNumbers = new JLabel("-0");
 
     JPanel rightPanel = new JPanel();
-    StackedPanel rightImagePanel = new StackedPanel(10, 10, FlowLayout.RIGHT);
-    JPanel rightStatPanel = new JPanel();
+    StackedPanel rightStatPanel = new StackedPanel(10, 0, FlowLayout.LEFT);
+    JLabel rightArmorText = new ILabel("Armor: Blue", midTextSize, true, Color.blue);
+    JLabel rightHealthText = new ILabel("Health: Red", midTextSize, true, Color.red);
+    JLabel rightDamageText = new ILabel("Damage: Black", midTextSize, true, Color.black);
+    JLabel rightMagicText = new ILabel("Magic Damage: Purple", midTextSize, true, Color.magenta);
+    JLabel rightDelayText = new ILabel("Delay: Green", midTextSize, true, Color.green);
+    JLabel rightGoldText = new ILabel("Gold: Yellow", midTextSize, true, Color.yellow);
+    StackedPanel rightImagePanel = new StackedPanel(10, 0, FlowLayout.CENTER);
+    Box rightImageTitle = Box.createHorizontalBox();
+    JLabel rightNameText = new JLabel("poggers200040");
+    JLabel rightLevelText = new JLabel("Level: 0");
+    JLabel rightImage = new JLabel(getPlaceHolderImage(250, 250));
+    JProgressBar rightArmorBar = new IBar("Armor",200,25,Color.blue);
+    JProgressBar rightHealthBar = new IBar("Health", 200, 25, Color.red);
+    JProgressBar rightDelayBar = new IBar("Delay", 200, 25, Color.green);
+    JLabel rightDamageNumbers = new JLabel("-0");
+    
+    int buttonSize = 100;
+    JButton weapon1 = new JButton(getPlaceHolderImage(buttonSize, buttonSize));
+    JButton weapon2 = new JButton(getPlaceHolderImage(buttonSize, buttonSize));
+    JButton weapon3 = new JButton(getPlaceHolderImage(buttonSize, buttonSize));
+    StackedPanel barPanel = new StackedPanel(0, 50, FlowLayout.CENTER);
+    IBar expBar = new IBar("EXP", 125, 125/2, Color.blue);
+    IBar progressBar = new IBar("PROGRESS", 125, 125/2, Color.orange);
+    JButton sheild1 = new JButton(getPlaceHolderImage(buttonSize, buttonSize));
+    JButton sheild2 = new JButton(getPlaceHolderImage(buttonSize, buttonSize));
+    JButton sheild3 = new JButton(getPlaceHolderImage(buttonSize, buttonSize));
 
     JPanel panel;
     Box horizontalBox;
@@ -57,15 +82,11 @@ public class GUI {
         // Window initialization
         JFrame window = new JFrame("Helpless Hero");
         window.setSize(1280, 720);
-        window.setVisible(true);
         window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         // --
 
         JPanel rootPanel = new JPanel();
         rootPanel.setLayout(new BoxLayout(rootPanel, BoxLayout.Y_AXIS));
-        topPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        midPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        botPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         rootPanel.add(topPanel);
         rootPanel.add(midPanel);
         rootPanel.add(botPanel);
@@ -110,12 +131,13 @@ public class GUI {
         competitiveStatsPanel.add(killNumberText);
         competitiveStatsPanel.add(deathNumberText);
         topPanel.add(competitiveStatsPanel);
-
+        
+        // MID PANEL
+        midPanel.setMaximumSize(new Dimension(1280, 450));
         // LEFT MIDDLE PANEL
-        leftPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        
         leftPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 50, 0));
 
-        leftStatPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         leftStatPanel.setLayout(new BoxLayout(leftStatPanel, BoxLayout.Y_AXIS));
         leftStatPanel.add(leftArmorText);
         leftStatPanel.add(leftHealthText);
@@ -125,7 +147,6 @@ public class GUI {
         leftStatPanel.add(leftGoldText);
         leftPanel.add(leftStatPanel);
         
-        leftImagePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         leftImagePanel.setLayout(new BoxLayout(leftImagePanel, BoxLayout.Y_AXIS));
         leftNameText.setAlignmentX(Component.LEFT_ALIGNMENT);
         leftImageTitle.add(leftNameText);
@@ -133,23 +154,60 @@ public class GUI {
         leftImageTitle.add(leftLevelText);
         leftImagePanel.add(leftImageTitle);
         leftImagePanel.add(leftImage);
-        //leftArmorBar.setSize(new Dimension(200, 200));
-        leftArmorBar.setPreferredSize(new Dimension( 200,25));
+        leftArmorBar.setValue(50);
         leftImagePanel.add(leftArmorBar);
-        leftHealthBar.setPreferredSize(new Dimension( 200,25));
         leftImagePanel.add(leftHealthBar);
-        leftDelayBar.setPreferredSize(new Dimension( 200,25));
         leftImagePanel.add(leftDelayBar);
         leftImagePanel.add(leftDamageNumbers);
         leftPanel.add(leftImagePanel);
         midPanel.add(leftPanel);
 
         // RIGHT MIDDLE PANEL
-        rightPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         rightPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 50, 0));
+
+        rightImagePanel.setLayout(new BoxLayout(rightImagePanel, BoxLayout.Y_AXIS));
+        rightNameText.setAlignmentX(Component.LEFT_ALIGNMENT);
+        rightImageTitle.add(rightNameText);
+        rightImageTitle.add(Box.createHorizontalStrut(90));
+        rightImageTitle.add(rightLevelText);
+        rightImagePanel.add(rightImageTitle);
+        rightImagePanel.add(rightImage);
+        rightArmorBar.setValue(50);
+        rightImagePanel.add(rightArmorBar);
+        rightImagePanel.add(rightHealthBar);
+        rightImagePanel.add(rightDelayBar);
+        rightImagePanel.add(rightDamageNumbers);
+        rightPanel.add(rightImagePanel);
+
+        rightStatPanel.setLayout(new BoxLayout(rightStatPanel, BoxLayout.Y_AXIS));
+        rightStatPanel.add(rightArmorText);
+        rightStatPanel.add(rightHealthText);
+        rightStatPanel.add(rightDamageText);
+        rightStatPanel.add(rightMagicText);
+        rightStatPanel.add(rightDelayText);
+        rightStatPanel.add(rightGoldText);
+        rightPanel.add(rightStatPanel);
         midPanel.add(rightPanel);
         
-        
+        // BOT PANEL
+        botPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        weapon1.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        weapon2.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        weapon3.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        sheild1.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        sheild2.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        sheild3.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        botPanel.add(weapon1);
+        botPanel.add(weapon2);
+        botPanel.add(weapon3);
+        barPanel.add(expBar);
+        barPanel.add(progressBar);
+        botPanel.add(barPanel);
+        botPanel.add(sheild1);
+        botPanel.add(sheild2);
+        botPanel.add(sheild3);
+
+        window.setVisible(true);
     }
     public Icon getPlaceHolderImage(int width, int height) {
         ImageIcon imageIcon = new ImageIcon("image.png", "palceholder image");
