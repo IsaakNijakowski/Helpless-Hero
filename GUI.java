@@ -16,12 +16,12 @@ public class GUI {
     JPanel competitiveTimeLabel = new JPanel();
     JPanel competitiveTimeText = new JPanel();
     JPanel competitiveStatsPanel = new JPanel();
-    JLabel stage1TimeLabel = new JLabel("Stage 1: ");
-    JLabel stage2TimeLabel = new JLabel("Stage 2: ");
-    JLabel stage3TimeLabel = new JLabel("Stage 3: ");
-    JLabel stage1TimeText = new JLabel("1-:--");
-    JLabel stage2TimeText = new JLabel("2-:--");
-    JLabel stage3TimeText = new JLabel("3-:--");
+    JLabel stage1TimeLabel = new ILabel("Stage 1: ", 15, true, Color.black);
+    JLabel stage2TimeLabel = new ILabel("Stage 2: ", 15, true, Color.black);
+    JLabel stage3TimeLabel = new ILabel("Stage 3: ", 15, true, Color.black);
+    JLabel stage1TimeText = new ILabel("1-:--", 15, true, Color.darkGray);
+    JLabel stage2TimeText = new ILabel("2-:--", 15, true, Color.darkGray);
+    JLabel stage3TimeText = new ILabel("3-:--", 15, true, Color.darkGray);
     JLabel runNumberText = new JLabel("Run: 1");
     JLabel killNumberText = new JLabel("Kills: 2");
     JLabel deathNumberText = new JLabel("Deaths: 3");
@@ -43,7 +43,7 @@ public class GUI {
     JProgressBar leftArmorBar = new IBar("Armor",200,25,Color.blue);
     JProgressBar leftHealthBar = new IBar("Health", 200, 25, Color.red);
     JProgressBar leftDelayBar = new IBar("Delay", 200, 25, Color.green);
-    JLabel leftDamageNumbers = new JLabel("-0");
+    JLabel leftDamageNumbers = new ILabel("-0", 20, true, Color.blue);
 
     JPanel rightPanel = new JPanel();
     StackedPanel rightStatPanel = new StackedPanel(10, 0, FlowLayout.LEFT);
@@ -61,7 +61,7 @@ public class GUI {
     JProgressBar rightArmorBar = new IBar("Armor",200,25,Color.blue);
     JProgressBar rightHealthBar = new IBar("Health", 200, 25, Color.red);
     JProgressBar rightDelayBar = new IBar("Delay", 200, 25, Color.green);
-    JLabel rightDamageNumbers = new JLabel("-0");
+    JLabel rightDamageNumbers = new ILabel("-0", 20, true, Color.red);
     
     int buttonSize = 100;
     JButton weapon1 = new JButton(getPlaceHolderImage(buttonSize, buttonSize));
@@ -106,17 +106,11 @@ public class GUI {
         //competitiveTimePanel.setMinimumSize(new Dimension(400, 100));
         // competitive time panel left
         competitiveTimeLabel.setLayout(new BoxLayout(competitiveTimeLabel, BoxLayout.Y_AXIS));
-        stage1TimeLabel.setFont(new Font(timerText.getFont().getName(), Font.BOLD, 15));
-        stage2TimeLabel.setFont(new Font(timerText.getFont().getName(), Font.BOLD, 15));
-        stage3TimeLabel.setFont(new Font(timerText.getFont().getName(), Font.BOLD, 15));
         competitiveTimeLabel.add(stage1TimeLabel);
         competitiveTimeLabel.add(stage2TimeLabel);
         competitiveTimeLabel.add(stage3TimeLabel);
         competitiveTimePanel.add(competitiveTimeLabel);
         competitiveTimeText.setLayout(new BoxLayout(competitiveTimeText, BoxLayout.Y_AXIS));
-        stage1TimeText.setFont(new Font(timerText.getFont().getName(), Font.BOLD, 15));
-        stage2TimeText.setFont(new Font(timerText.getFont().getName(), Font.BOLD, 15));
-        stage3TimeText.setFont(new Font(timerText.getFont().getName(), Font.BOLD, 15));
         competitiveTimeText.add(stage1TimeText);
         competitiveTimeText.add(stage2TimeText);
         competitiveTimeText.add(stage3TimeText);
@@ -207,6 +201,8 @@ public class GUI {
         botPanel.add(sheild2);
         botPanel.add(sheild3);
 
+        //window.pack();
+        window.setLocationRelativeTo(null);
         window.setVisible(true);
     }
     public Icon getPlaceHolderImage(int width, int height) {
