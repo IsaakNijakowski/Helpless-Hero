@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-import customTools.ILabel;
+import customTools.*;
 
 import java.awt.*;
 public class GUI {
@@ -11,7 +11,7 @@ public class GUI {
 
     JLabel titleImage = new JLabel(getPlaceHolderImage(280, 80), SwingConstants.LEFT);
     JPanel timerPanel = new JPanel();
-    JLabel timerText = new JLabel("00:00", SwingConstants.CENTER);
+    JLabel timerText = new JLabel("00:00");
     JPanel competitiveTimePanel = new JPanel();
     JPanel competitiveTimeLabel = new JPanel();
     JPanel competitiveTimeText = new JPanel();
@@ -26,27 +26,33 @@ public class GUI {
     JLabel killNumberText = new JLabel("Kills: 2");
     JLabel deathNumberText = new JLabel("Deaths: 3");
 
+    int midTextSize = 30;
     JPanel leftPanel = new JPanel();
     JPanel leftStatPanel = new JPanel();
-    ILabel leftArmorText = new ILabel("Armor: Blue", 12, true);
-    JLabel leftHealthText = new JLabel("Health: Red");
-    JLabel leftDamageText = new JLabel("Damage: Black");
-    JLabel leftMagicText = new JLabel("Magic Damage: Purple");
-    JLabel leftDelayText = new JLabel("Delay: Green");
-    JLabel leftGoldText = new JLabel("Gold: Yellow");
+    JLabel leftArmorText = new ILabel("Armor: Blue", midTextSize, true, Color.blue);
+    JLabel leftHealthText = new ILabel("Health: Red", midTextSize, true, Color.red);
+    JLabel leftDamageText = new ILabel("Damage: Black", midTextSize, true, Color.black);
+    JLabel leftMagicText = new ILabel("Magic Damage: Purple", midTextSize, true, Color.magenta);
+    JLabel leftDelayText = new ILabel("Delay: Green", midTextSize, true, Color.green);
+    JLabel leftGoldText = new ILabel("Gold: Yellow", midTextSize, true, Color.yellow);
     JPanel leftImagePanel = new JPanel();
     JPanel leftImageTitle = new JPanel();
-    JLabel leftNameText = new JLabel();
-    JLabel leftLevelText = new JLabel();
+    JLabel leftNameText = new JLabel("Name");
+    JLabel leftLevelText = new JLabel("Level: 0");
     JLabel leftImage = new JLabel(getPlaceHolderImage(150, 300));
     JProgressBar leftArmorBar = new JProgressBar();
     JProgressBar leftHealthBar = new JProgressBar();
     JProgressBar leftDelayBar = new JProgressBar();
-    JLabel leftDamageNumbers = new JLabel();
+    JLabel leftDamageNumbers = new JLabel("-0");
 
     JPanel rightPanel = new JPanel();
     JPanel rightImagePanel = new JPanel();
     JPanel rightStatPanel = new JPanel();
+
+    StackedPanel stacked = new StackedPanel(50, 50, FlowLayout.CENTER);
+    JLabel text1 = new JLabel("text1");
+    JLabel text2 = new JLabel("text2222222222");
+    JLabel text3 = new JLabel("text3");
 
     public GUI() {
         // Window initialization
@@ -107,9 +113,11 @@ public class GUI {
         topPanel.add(competitiveStatsPanel);
 
         // LEFT MIDDLE PANEL
+        leftPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         leftPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 50, 0));
+        leftStatPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         leftStatPanel.setLayout(new BoxLayout(leftStatPanel, BoxLayout.Y_AXIS));
-        leftStatPanel.add(Box.createRigidArea(new Dimension(100, 100)));
+        leftStatPanel.add(Box.createVerticalStrut(100));
         leftStatPanel.add(leftArmorText);
         leftStatPanel.add(leftHealthText);
         leftStatPanel.add(leftDamageText);
@@ -117,12 +125,29 @@ public class GUI {
         leftStatPanel.add(leftDelayText);
         leftStatPanel.add(leftGoldText);
         leftPanel.add(leftStatPanel);
+        leftImagePanel.setMaximumSize(new Dimension(150, 700));
+        leftImagePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        leftImagePanel.setLayout(new BoxLayout(leftImagePanel, BoxLayout.Y_AXIS));
+        leftImageTitle.add(leftNameText);
+        leftImageTitle.add(leftLevelText);
+        leftImagePanel.add(leftImageTitle);
+        leftImagePanel.add(leftImage);
+        leftImagePanel.add(leftArmorBar);
+        leftImagePanel.add(leftHealthBar);
+        leftImagePanel.add(leftDelayBar);
+        leftImagePanel.add(leftDamageNumbers);
         leftPanel.add(leftImagePanel);
         midPanel.add(leftPanel);
 
         // RIGHT MIDDLE PANEL
-        leftPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 50, 0));
+        rightPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        rightPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 50, 0));
         midPanel.add(rightPanel);
+        
+        stacked.add(text1);
+        stacked.add(text2);
+        stacked.add(text3);
+        midPanel.add(stacked);
         
         
     }
