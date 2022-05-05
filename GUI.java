@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 
 import customTools.*;
 
@@ -76,9 +77,36 @@ public class GUI {
 
     JPanel baseLeftPanel = new JPanel();
     JPanel baseRightPanel = new JPanel();
+
     JButton testTutorial = new JButton("test tutorial");
     JButton testLevelUp = new JButton("test level up");
 
+    StackedPanel tutorialPanel = new StackedPanel(10, 10, FlowLayout.CENTER);
+    ILabel tutorialTitle = new ILabel("Tutorial!", 20, true, Color.red);
+    JTextArea tutorialText = new WrapText(7, 50);
+    JButton tutorialButton = new JButton("Continue");
+
+    int rows = 2;
+    int columns = 40;
+    StackedPanel levelPanel = new StackedPanel(0, 20, FlowLayout.LEFT);
+    ILabel levelUpText = new ILabel("Level Up!", 20, true, Color.blue);
+    JPanel selectionPanel1 = new JPanel();
+    JButton selectionButton1 = new JButton(getPlaceHolderImage(100, 100));
+    StackedPanel selectionTextPanel1 = new StackedPanel(0, 25, FlowLayout.LEFT);
+    ILabel selectionTitle1 = new ILabel("Selection 1", 15, true, Color.darkGray);
+    WrapText selectionDescription1 = new WrapText(rows, columns);
+    JPanel selectionPanel2 = new JPanel();
+    JButton selectionButton2 = new JButton(getPlaceHolderImage(100, 100));
+    StackedPanel selectionTextPanel2 = new StackedPanel(0, 25, FlowLayout.LEFT);
+    ILabel selectionTitle2 = new ILabel("Selection 2", 15, true, Color.darkGray);
+    WrapText selectionDescription2 = new WrapText(rows, columns);
+    JPanel selectionPanel3 = new JPanel();
+    JButton selectionButton3 = new JButton(getPlaceHolderImage(100, 100));
+    StackedPanel selectionTextPanel3 = new StackedPanel(0, 25, FlowLayout.LEFT);
+    ILabel selectionTitle3 = new ILabel("Selection 3", 15, true, Color.darkGray);
+    WrapText selectionDescription3 = new WrapText(rows, columns);
+
+    
 
     public GUI() {
         // Window initialization
@@ -205,14 +233,73 @@ public class GUI {
         botPanel.add(sheild3);
 
         // TEST BUTTONS
-        botPanel.add(testTutorial);
-        botPanel.add(testLevelUp);
+        //botPanel.add(testTutorial);
+        //botPanel.add(testLevelUp);
 
+        testTutorial.addActionListener(e -> {
+            baseLeftPanel.remove(leftPanel);
+            baseLeftPanel.add(tutorialPanel);
+            window.revalidate();
+        });
+        testLevelUp.addActionListener(e -> {
+            baseRightPanel.remove(rightPanel);
+            baseRightPanel.add(levelPanel);
+            window.revalidate();
+        });
+
+        // TUTORIAL PANEL
+        tutorialPanel.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+        tutorialPanel.setPreferredSize(new Dimension(612, 250));
+        tutorialPanel.add(tutorialTitle);
+        tutorialText.setText("Tutorial text! text text text text text texttexttext text text texttexttexttext text text text text texttexttext text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text ");
+        tutorialPanel.add(tutorialText);
+        tutorialPanel.add(tutorialButton);
+
+        tutorialButton.addActionListener(e -> {
+            baseLeftPanel.remove(tutorialPanel);
+            baseLeftPanel.add(leftPanel);
+            window.revalidate();
+        });
+
+        // LEVELUP PANEL
+        levelPanel.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+        levelPanel.setPreferredSize(new Dimension(612, 400));
+        levelPanel.add(levelUpText);
+
+        selectionDescription1.setText("Description description description description description description description description description description description description description description description description description description description description description");
+        selectionButton1.setPreferredSize(new Dimension(100,100));
+        selectionPanel1.add(selectionButton1);
+        selectionTextPanel1.add(selectionTitle1);
+        selectionTextPanel1.add(selectionDescription1);
+        selectionPanel1.add(selectionTextPanel1);
+        levelPanel.add(selectionPanel1);
         
+        selectionDescription2.setText("Wow, this is what the average description will look like. Does it fit correctly in the box? I dont know! figure it out.");
+        selectionButton2.setPreferredSize(new Dimension(100,100));
+        selectionPanel2.add(selectionButton2);
+        selectionTextPanel2.add(selectionTitle2);
+        selectionTextPanel2.add(selectionDescription2);
+        selectionPanel2.add(selectionTextPanel2);
+        levelPanel.add(selectionPanel2);
+
+        selectionDescription3.setText("Tutorial text! text text text text text texttexttext text text texttexttexttext text text text text texttexttext text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text ");
+        selectionButton3.setPreferredSize(new Dimension(100,100));
+        selectionPanel3.add(selectionButton3);
+        selectionTextPanel3.add(selectionTitle3);
+        selectionTextPanel3.add(selectionDescription3);
+        selectionPanel3.add(selectionTextPanel3);
+        levelPanel.add(selectionPanel3);
+        
+        selectionButton1.addActionListener(e -> {
+            baseRightPanel.remove(levelPanel);
+            baseRightPanel.add(rightPanel);
+            window.revalidate();
+        });
 
         window.setLocationRelativeTo(null);
         window.setVisible(true);
     }
+    
     public Icon getPlaceHolderImage(int width, int height) {
         ImageIcon imageIcon = new ImageIcon("image.png", "palceholder image");
         Image image = imageIcon.getImage();
