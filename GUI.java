@@ -1,4 +1,7 @@
 import javax.swing.*;
+
+import customTools.ILabel;
+
 import java.awt.*;
 public class GUI {
     
@@ -8,7 +11,7 @@ public class GUI {
 
     JLabel titleImage = new JLabel(getPlaceHolderImage(280, 80), SwingConstants.LEFT);
     JPanel timerPanel = new JPanel();
-    JLabel timerText = new JLabel("00:00");
+    JLabel timerText = new JLabel("00:00", SwingConstants.CENTER);
     JPanel competitiveTimePanel = new JPanel();
     JPanel competitiveTimeLabel = new JPanel();
     JPanel competitiveTimeText = new JPanel();
@@ -25,7 +28,7 @@ public class GUI {
 
     JPanel leftPanel = new JPanel();
     JPanel leftStatPanel = new JPanel();
-    JLabel leftArmorText = new JLabel("Armor: Blue");
+    ILabel leftArmorText = new ILabel("Armor: Blue", 12, true);
     JLabel leftHealthText = new JLabel("Health: Red");
     JLabel leftDamageText = new JLabel("Damage: Black");
     JLabel leftMagicText = new JLabel("Magic Damage: Purple");
@@ -106,7 +109,7 @@ public class GUI {
         // LEFT MIDDLE PANEL
         leftPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 50, 0));
         leftStatPanel.setLayout(new BoxLayout(leftStatPanel, BoxLayout.Y_AXIS));
-        leftStatPanel.add(Box.createRigidArea(new Dimension(0, 100)));
+        leftStatPanel.add(Box.createRigidArea(new Dimension(100, 100)));
         leftStatPanel.add(leftArmorText);
         leftStatPanel.add(leftHealthText);
         leftStatPanel.add(leftDamageText);
@@ -120,6 +123,7 @@ public class GUI {
         // RIGHT MIDDLE PANEL
         leftPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 50, 0));
         midPanel.add(rightPanel);
+        
         
     }
     public Icon getPlaceHolderImage(int width, int height) {
