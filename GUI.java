@@ -5,7 +5,27 @@ import customTools.*;
 
 import java.awt.*;
 public class GUI {
-    
+    JFrame window = new JFrame("Helpless Hero");
+
+    JPanel menuPanel = new JPanel();
+    JPanel logoPanel = new JPanel();
+    JPanel menuLowerPanel = new JPanel();
+
+    JLabel titleCard = new JLabel(getPlaceHolderImage(1200, 300));
+    StackedPanel statPanel = new StackedPanel(vgap, hgap, align);
+    ILabel runsLabel = new ILabel(text, size, bold);
+    ILabel deathLabel = new ILabel(text, size, bold);
+    ILabel killLabel = new ILabel(text, size, bold);
+    ILabel menuTimeLabel1 = new ILabel(text, size, bold);
+    ILabel menuTimeLabel2 = new ILabel(text, size, bold);
+    ILabel menuTimeLabel3 = new ILabel(text, size, bold);
+    ILabel menuTimeLabel4 = new ILabel(text, size, bold);
+    StackedPanel menuButtonPanel = new StackedPanel(vgap, hgap, align);
+    JTextArea nameArea = new JTextArea();
+    JButton playButton = new JButton("Play");
+    JButton itemButton = new JButton("Items");
+
+    JPanel gamePanel = new JPanel();
     JPanel topPanel = new JPanel();
     JPanel midPanel = new JPanel();
     JPanel botPanel = new JPanel();
@@ -110,17 +130,15 @@ public class GUI {
 
     public GUI() {
         // Window initialization
-        JFrame window = new JFrame("Helpless Hero");
         window.setSize(1280, 720);
         window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         // --
 
-        JPanel rootPanel = new JPanel();
-        rootPanel.setLayout(new BoxLayout(rootPanel, BoxLayout.Y_AXIS));
-        rootPanel.add(topPanel);
-        rootPanel.add(midPanel);
-        rootPanel.add(botPanel);
-        window.add(rootPanel);
+        gamePanel.setLayout(new BoxLayout(gamePanel, BoxLayout.Y_AXIS));
+        gamePanel.add(topPanel);
+        gamePanel.add(midPanel);
+        gamePanel.add(botPanel);
+        window.add(gamePanel);
 
         // TOP PANEL
         topPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 110, 0));
