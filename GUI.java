@@ -1,3 +1,4 @@
+import javax.print.attribute.standard.PageRanges;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 
@@ -10,18 +11,20 @@ public class GUI {
     JPanel menuPanel = new JPanel();
     JPanel logoPanel = new JPanel();
     JPanel menuLowerPanel = new JPanel();
+    JPanel menuLowerLeftPanel = new JPanel();
+    JPanel menuLowerRightPanel = new JPanel();
 
     JLabel titleCard = new JLabel(getPlaceHolderImage(1200, 300));
-    StackedPanel statPanel = new StackedPanel(vgap, hgap, align);
-    ILabel runsLabel = new ILabel(text, size, bold);
-    ILabel deathLabel = new ILabel(text, size, bold);
-    ILabel killLabel = new ILabel(text, size, bold);
-    ILabel menuTimeLabel1 = new ILabel(text, size, bold);
-    ILabel menuTimeLabel2 = new ILabel(text, size, bold);
-    ILabel menuTimeLabel3 = new ILabel(text, size, bold);
-    ILabel menuTimeLabel4 = new ILabel(text, size, bold);
-    StackedPanel menuButtonPanel = new StackedPanel(vgap, hgap, align);
-    JTextArea nameArea = new JTextArea();
+    StackedPanel statPanel = new StackedPanel(10, 10, FlowLayout.LEFT);
+    ILabel runsLabel = new ILabel("Runs:", 24, true);
+    ILabel deathLabel = new ILabel("Lowest Deaths:", 12, false);
+    ILabel killLabel = new ILabel("Highest Kills:", 12, false);
+    ILabel menuTimeLabel1 = new ILabel("Lowest time part 1:", 12, false);
+    ILabel menuTimeLabel2 = new ILabel("Lowest time part 2:", 12, false);
+    ILabel menuTimeLabel3 = new ILabel("Lowest time part 3:", 12, false);
+    ILabel menuTimeLabel4 = new ILabel("Lowest time overall:", 24, true);
+    StackedPanel menuButtonPanel = new StackedPanel(10, 10, FlowLayout.LEFT);
+    JTextArea nameArea = new JTextArea("Click here to set your name!");
     JButton playButton = new JButton("Play");
     JButton itemButton = new JButton("Items");
 
@@ -134,11 +137,53 @@ public class GUI {
         window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         // --
 
+        // TITLE PANEL
+        menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
+        menuPanel.add(logoPanel);
+        menuPanel.add(menuLowerPanel);
+        window.add(menuPanel);
+
+        // logo panel
+        logoPanel.add(titleCard);
+
+        // LOWER MENU PANEL
+        menuLowerPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 50, 0));
+        menuLowerPanel.add(statPanel);
+        menuLowerPanel.add(menuButtonPanel);
+        statPanel.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+
+        // stat panel
+        statPanel.setPreferredSize(new Dimension(700, 250));
+        statPanel.add(runsLabel);
+        statPanel.add(deathLabel);
+        statPanel.add(killLabel);
+        statPanel.add(menuTimeLabel1);
+        statPanel.add(menuTimeLabel2);
+        statPanel.add(menuTimeLabel3);
+        statPanel.add(menuTimeLabel4);
+
+        // button panel
+        playButton.setPreferredSize(new Dimension(400, 100));
+        itemButton.setPreferredSize(new Dimension(400, 100));
+        menuButtonPanel.add(nameArea);
+        menuButtonPanel.add(playButton);
+        menuButtonPanel.add(itemButton);
+        nameArea.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+        nameArea.setPreferredSize(new Dimension(400,20));
+
+        playButton.addActionListener(e -> {
+            window.remove(menuPanel);
+            window.add(gamePanel);
+            window.revalidate();
+        });
+
+        // GAME PANEL
         gamePanel.setLayout(new BoxLayout(gamePanel, BoxLayout.Y_AXIS));
         gamePanel.add(topPanel);
         gamePanel.add(midPanel);
         gamePanel.add(botPanel);
-        window.add(gamePanel);
+        //window.add(gamePanel);
+        //--------------------------------------------------------------------------------------------------------------------------
 
         // TOP PANEL
         topPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 110, 0));
