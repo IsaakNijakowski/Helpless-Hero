@@ -11,8 +11,6 @@ public class GUI {
     JPanel menuPanel = new JPanel();
     JPanel logoPanel = new JPanel();
     JPanel menuLowerPanel = new JPanel();
-    JPanel menuLowerLeftPanel = new JPanel();
-    JPanel menuLowerRightPanel = new JPanel();
 
     JLabel titleCard = new JLabel(getPlaceHolderImage(1200, 300));
     StackedPanel statPanel = new StackedPanel(10, 10, FlowLayout.LEFT);
@@ -27,6 +25,49 @@ public class GUI {
     JTextArea nameArea = new JTextArea("Click here to set your name!");
     JButton playButton = new JButton("Play");
     JButton itemButton = new JButton("Items");
+
+    int itemImageSize = 90;
+    JPanel menuItemPanel = new JPanel();
+    StackedPanel menuItemsWeapons = new StackedPanel(25, 25, FlowLayout.LEFT);
+    JPanel itemsRow1 = new JPanel();
+    JPanel itemsRow2 = new JPanel();
+    JPanel itemsRow3 = new JPanel();
+    StackedPanel menuItemsArmor = new StackedPanel(25, 25, FlowLayout.LEFT);
+    JPanel itemsRow4 = new JPanel();
+    JPanel itemsRow5 = new JPanel();
+    JPanel itemsRow6 = new JPanel();
+    JButton menuBackButton = new JButton("Back");
+    // Fast Weapons
+    JLabel itemAguluzenaKatana = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemTwinKnives = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemSilverSaber = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemSeratedBlade = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    // Magic Weapons
+    JLabel itemGlowSaber = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemPlasmaBlade = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemFireball = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemFlameAbsorber = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    // Heavy Weapons
+    JLabel itemIliyaHammer = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemSweepingAxe = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemBlastCannon = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemCoiledBlade = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    // Light Armor
+    JLabel itemSwiftSatchel = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemInfusedWristSleeve = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemReinforcedBracer = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemSpinningGuard = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    // Magic Armor
+    JLabel itemGlowingRings = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemHoodOfDeath = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemSaberGaurd = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemEnergyField = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    // Heavy Armor
+    JLabel itemKindWall = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemSpikedPauldron = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemWideShield = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+    JLabel itemKnightArmor = new JLabel(getPlaceHolderImage(itemImageSize, itemImageSize));
+
 
     JPanel gamePanel = new JPanel();
     JPanel topPanel = new JPanel();
@@ -176,6 +217,74 @@ public class GUI {
             window.add(gamePanel);
             window.revalidate();
         });
+
+        itemButton.addActionListener(e -> {
+            menuLowerPanel.remove(statPanel);
+            menuLowerPanel.remove(menuButtonPanel);
+            menuLowerPanel.add(menuItemPanel);
+            window.revalidate();
+        });
+
+        // ITEM MENU PANEL --------------------------------------------------------------------------------------------------------
+    menuItemPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+    menuItemPanel.add(menuItemsWeapons);
+    menuItemPanel.add(menuItemsArmor);
+    menuBackButton.setPreferredSize(new Dimension(150,125));
+    menuItemPanel.add(menuBackButton);
+
+    // Weapon Column
+    menuItemsWeapons.add(itemsRow1);
+    menuItemsWeapons.add(itemsRow2);
+    menuItemsWeapons.add(itemsRow3);
+    itemsRow1.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
+    itemsRow2.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
+    itemsRow3.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
+    //row 1
+    itemsRow1.add(itemAguluzenaKatana);
+    itemsRow1.add(itemTwinKnives);
+    itemsRow1.add(itemSilverSaber);
+    itemsRow1.add(itemSeratedBlade);
+    //row 2
+    itemsRow2.add(itemGlowSaber);
+    itemsRow2.add(itemPlasmaBlade);
+    itemsRow2.add(itemFireball);
+    itemsRow2.add(itemFlameAbsorber);
+    //row 3
+    itemsRow3.add(itemIliyaHammer);
+    itemsRow3.add(itemSweepingAxe);
+    itemsRow3.add(itemBlastCannon);
+    itemsRow3.add(itemCoiledBlade);
+
+    // Armor Column
+    menuItemsArmor.add(itemsRow4);
+    menuItemsArmor.add(itemsRow5);
+    menuItemsArmor.add(itemsRow6);
+    itemsRow4.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
+    itemsRow5.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
+    itemsRow6.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
+    //row 4
+    itemsRow4.add(itemSwiftSatchel);
+    itemsRow4.add(itemInfusedWristSleeve);
+    itemsRow4.add(itemReinforcedBracer);
+    itemsRow4.add(itemSpinningGuard);
+    //row 5
+    itemsRow5.add(itemGlowingRings);
+    itemsRow5.add(itemHoodOfDeath);
+    itemsRow5.add(itemSaberGaurd);
+    itemsRow5.add(itemEnergyField);
+    //row 6
+    itemsRow6.add(itemKindWall);
+    itemsRow6.add(itemSpikedPauldron);
+    itemsRow6.add(itemWideShield);
+    itemsRow6.add(itemKnightArmor);
+
+    // Back button
+    menuBackButton.addActionListener(e -> {
+        menuLowerPanel.add(statPanel);
+        menuLowerPanel.add(menuButtonPanel);
+        menuLowerPanel.remove(menuItemPanel);
+        window.revalidate();
+    });
 
         // GAME PANEL
         gamePanel.setLayout(new BoxLayout(gamePanel, BoxLayout.Y_AXIS));
