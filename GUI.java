@@ -1,11 +1,15 @@
-import javax.print.attribute.standard.PageRanges;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 
 import customTools.*;
 
 import java.awt.*;
+import java.util.ArrayList;
 public class GUI {
+    Player player = new Player();
+    ArrayList<Weapon> weaponList = new ArrayList<>(); 
+    ArrayList<Shield> shieldList = new ArrayList<>();
+
     JFrame window = new JFrame("Helpless Hero");
 
     JPanel menuPanel = new JPanel();
@@ -120,7 +124,7 @@ public class GUI {
     JLabel rightGoldText = new ILabel("Gold: Yellow", midTextSize, true, Color.yellow);
     StackedPanel rightImagePanel = new StackedPanel(10, 0, FlowLayout.CENTER);
     Box rightImageTitle = Box.createHorizontalBox();
-    JLabel rightNameText = new JLabel("poggers200040");
+    JLabel rightNameText = new JLabel("bigMonsterMan");
     JLabel rightLevelText = new JLabel("Level: 0");
     JLabel rightImage = new JLabel(getPlaceHolderImage(250, 250));
     JProgressBar rightArmorBar = new IBar("Armor",200,25,Color.blue);
@@ -216,6 +220,7 @@ public class GUI {
             window.remove(menuPanel);
             window.add(gamePanel);
             window.revalidate();
+            startGame();
         });
 
         itemButton.addActionListener(e -> {
@@ -478,6 +483,49 @@ public class GUI {
         Image newimg = image.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
         imageIcon = new ImageIcon(newimg);
         return imageIcon;
+    }
+
+    public void startGame() {
+        weaponList = initiateWeapons();
+        shieldList = initiateSheilds();
+        initiatePlayer(); //this has to be done after items since player needs access to items
+        // Select weapon
+        // calculate stats (every new weapon, weapon upgrade, new monster, or new level)
+        // select monster
+        // calclate monster stats (ever new monster)
+        // start game
+    }
+    public void initiatePlayer() {
+        player.setHealth(100);
+        player.setPlayerWeapons(weaponList);
+        player.setPlayerShields(shieldList);
+    }
+    public ArrayList<Weapon> initiateWeapons() {
+        ArrayList<Weapon> weapons = new ArrayList<>();
+        weapons.add(new Weapon("Aguluzena Katana", 10, 0, 50));
+        weapons.add(new Weapon("Twin Knives", 5, 0, 50));
+        weapons.add(new Weapon("Silver Saber", 5, 0, 40));
+        weapons.add(new Weapon("Serated Blade", 10, 0, 75));
+        return weapons;
+    }
+    public ArrayList<Shield> initiateSheilds() {
+        ArrayList<Shield> shields = new ArrayList<>();
+        shields.add(new Shield("Swift Satchel", 5));
+        shields.add(new Shield("Infused Wrist Sleeve", 5));
+        shields.add(new Shield("Reinforced Bracer", 5));
+        shields.add(new Shield("Spinning Guard", 5));
+        return shields;
+    }
+    public void selectWeapon() {
+        //clone weapon list
+        //clone player weapon list
+        //remove player items from weapon list until player items is empty
+        //select a weapon
+        //remove it from cloned list
+        //repeat 2 more times
+        //open select panel
+        //set select panel info
+        //add item to player
     }
 
     public static void main(String[] args) {
