@@ -481,7 +481,6 @@ public class GUI {
     public void startGame() {
         weaponList = initiateWeapons();
         shieldList = initiateSheilds();
-        initiatePlayer(); //this has to be done after items since player needs access to items
         window.remove(menuPanel); //leve menu panel
         window.add(gamePanel); // go to game panel
         window.revalidate(); // update the screen
@@ -490,9 +489,6 @@ public class GUI {
         // select monster
         // calclate monster stats (every new monster)
         // begin fighting
-    }
-    public void initiatePlayer() {
-        player.setHealth(100);
     }
     public ArrayList<Weapon> initiateWeapons() {
         ArrayList<Weapon> weapons = new ArrayList<>();
@@ -576,6 +572,7 @@ public class GUI {
             break;
         }
     }
+
 
     public static void main(String[] args) {
         new GUI();
