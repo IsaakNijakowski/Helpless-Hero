@@ -10,7 +10,9 @@ public class Weapon {
         this.magicDamage = magicDamage;
         this.delay = delay;
     }
-
+    public String getName() {
+        return name;
+    }
     public int getDamage() {
         return damage;
     }
@@ -20,5 +22,7 @@ public class Weapon {
     public int getDelay() {
         return delay;
     }
-    
+    public String toString() {
+        return name;
+    }
 }

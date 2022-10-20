@@ -9,11 +9,8 @@ public class Player {
     public void setHealth(int health) {
         this.health = health;
     }
-    public void setPlayerWeapons(ArrayList<Weapon> playerWeapons) {
-        this.playerWeapons = playerWeapons;
-    }
-    public void setPlayerShields(ArrayList<Shield> playerShields) {
-        this.playerShields = playerShields;
+    public void giveWeapon(Weapon weapon) {
+        playerWeapons.add(weapon);
     }
     //Get
     public int getHealth() {

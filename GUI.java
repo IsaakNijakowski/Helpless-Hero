@@ -217,9 +217,6 @@ public class GUI {
         nameArea.setPreferredSize(new Dimension(400,20));
 
         playButton.addActionListener(e -> {
-            window.remove(menuPanel);
-            window.add(gamePanel);
-            window.revalidate();
             startGame();
         });
 
@@ -428,7 +425,7 @@ public class GUI {
         tutorialPanel.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
         tutorialPanel.setPreferredSize(new Dimension(612, 250));
         tutorialPanel.add(tutorialTitle);
-        tutorialText.setText("Tutorial text! text text text text text texttexttext text text texttexttexttext text text text text texttexttext text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text ");
+        tutorialText.setText("If you see this text there was an error");
         tutorialPanel.add(tutorialText);
         tutorialPanel.add(tutorialButton);
 
@@ -443,7 +440,7 @@ public class GUI {
         levelPanel.setPreferredSize(new Dimension(612, 400));
         levelPanel.add(levelUpText);
 
-        selectionDescription1.setText("Description description description description description description description description description description description description description description description description description description description description description");
+        selectionDescription1.setText("If you see this text there was an error");
         selectionButton1.setPreferredSize(new Dimension(100,100));
         selectionPanel1.add(selectionButton1);
         selectionTextPanel1.add(selectionTitle1);
@@ -451,7 +448,7 @@ public class GUI {
         selectionPanel1.add(selectionTextPanel1);
         levelPanel.add(selectionPanel1);
         
-        selectionDescription2.setText("Wow, this is what the average description will look like. Does it fit correctly in the box? I dont know! figure it out.");
+        selectionDescription2.setText("If you see this text there was an error");
         selectionButton2.setPreferredSize(new Dimension(100,100));
         selectionPanel2.add(selectionButton2);
         selectionTextPanel2.add(selectionTitle2);
@@ -459,7 +456,7 @@ public class GUI {
         selectionPanel2.add(selectionTextPanel2);
         levelPanel.add(selectionPanel2);
 
-        selectionDescription3.setText("Tutorial text! text text text text text texttexttext text text texttexttexttext text text text text texttexttext text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text ");
+        selectionDescription3.setText("If you see this text there was an error");
         selectionButton3.setPreferredSize(new Dimension(100,100));
         selectionPanel3.add(selectionButton3);
         selectionTextPanel3.add(selectionTitle3);
@@ -467,11 +464,7 @@ public class GUI {
         selectionPanel3.add(selectionTextPanel3);
         levelPanel.add(selectionPanel3);
         
-        selectionButton1.addActionListener(e -> {
-            baseRightPanel.remove(levelPanel);
-            baseRightPanel.add(rightPanel);
-            window.revalidate();
-        });
+        
 
         window.setLocationRelativeTo(null);
         window.setVisible(true);
@@ -489,16 +482,17 @@ public class GUI {
         weaponList = initiateWeapons();
         shieldList = initiateSheilds();
         initiatePlayer(); //this has to be done after items since player needs access to items
-        // Select weapon
+        window.remove(menuPanel); //leve menu panel
+        window.add(gamePanel); // go to game panel
+        window.revalidate(); // update the screen
+        selectWeapon();
         // calculate stats (every new weapon, weapon upgrade, new monster, or new level)
         // select monster
-        // calclate monster stats (ever new monster)
-        // start game
+        // calclate monster stats (every new monster)
+        // begin fighting
     }
     public void initiatePlayer() {
         player.setHealth(100);
-        player.setPlayerWeapons(weaponList);
-        player.setPlayerShields(shieldList);
     }
     public ArrayList<Weapon> initiateWeapons() {
         ArrayList<Weapon> weapons = new ArrayList<>();
@@ -517,15 +511,70 @@ public class GUI {
         return shields;
     }
     public void selectWeapon() {
-        //clone weapon list
-        //clone player weapon list
-        //remove player items from weapon list until player items is empty
-        //select a weapon
-        //remove it from cloned list
-        //repeat 2 more times
-        //open select panel
-        //set select panel info
-        //add item to player
+        ArrayList<Weapon> weaponCopy = (ArrayList<Weapon>) weaponList.clone();
+        ArrayList<Weapon> existList = (ArrayList<Weapon>) player.getPlayerWeapons().clone();
+        while (existList.size() > 0) {
+            for (int i = 0; i < weaponCopy.size(); i++) {
+                for (int e = 0; e < existList.size(); e++) {
+                    if (weaponCopy.get(i).getName().equals(existList.get(e).getName())) {
+                        weaponCopy.remove(i);
+                        existList.remove(e);
+                    }
+                }
+            }
+        }
+        ArrayList<Weapon> selectList = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            int rand = (int) Math.floor(Math.random()*weaponCopy.size());
+            selectList.add(weaponCopy.get(rand));
+            weaponCopy.remove(rand);
+        }
+        // set select panel info
+        selectionTitle1.setText(selectList.get(0).getName());
+        selectionTitle2.setText(selectList.get(1).getName());
+        selectionTitle3.setText(selectList.get(2).getName());
+        baseRightPanel.remove(rightPanel);
+        baseRightPanel.add(levelPanel);
+        window.revalidate();
+        selectionButton1.addActionListener(e -> {
+            player.giveWeapon(selectList.get(0));
+            updateWeaponIcon();
+            baseRightPanel.remove(levelPanel);
+            baseRightPanel.add(rightPanel);
+            window.revalidate();
+        });
+        selectionButton2.addActionListener(e -> {
+            player.giveWeapon(selectList.get(1));
+            updateWeaponIcon();
+            baseRightPanel.remove(levelPanel);
+            baseRightPanel.add(rightPanel);
+            window.revalidate();
+        });
+        selectionButton3.addActionListener(e -> {
+            player.giveWeapon(selectList.get(2));
+            updateWeaponIcon();
+            baseRightPanel.remove(levelPanel);
+            baseRightPanel.add(rightPanel);
+            window.revalidate();
+        });
+        
+    }
+
+    public void updateWeaponIcon() {
+        int weaponCount = player.getPlayerWeapons().size();
+        switch (weaponCount) {
+            case(1):
+            weapon1.setIcon(null);
+            break;
+            case(2):
+            weapon2.setIcon(null);
+            break;
+            case(3):
+            weapon3.setIcon(null);
+            break;
+            default: System.err.println("An error has occured at selectWeapon --> switch(weaponCount), player has an invald number of weapons");
+            break;
+        }
     }
 
     public static void main(String[] args) {
