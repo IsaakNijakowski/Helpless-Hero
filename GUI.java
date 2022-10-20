@@ -564,15 +564,15 @@ public class GUI {
         int weaponCount = player.getPlayerWeapons().size();
         switch (weaponCount) {
             case(1):
-            weapon1.setIcon(null);
+            weapon1.setIcon(player.getPlayerWeapons().get(0).getIcon());
             break;
             case(2):
-            weapon2.setIcon(null);
+            weapon2.setIcon(player.getPlayerWeapons().get(1).getIcon());
             break;
             case(3):
-            weapon3.setIcon(null);
+            weapon3.setIcon(player.getPlayerWeapons().get(2).getIcon());
             break;
-            default: System.err.println("An error has occured at selectWeapon --> switch(weaponCount), player has an invald number of weapons");
+            default: System.err.println("An error has occured at updateWeaponIcon(), player has an invald number of weapons");
             break;
         }
     }

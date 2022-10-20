@@ -1,14 +1,18 @@
+import javax.swing.*;
 public class Weapon {
     String name;
     int damage;
     int magicDamage;
     int delay;
+    String description;
+    ImageIcon icon;
 
     public Weapon(String name, int damage, int magicDamage, int delay) {
         this.name = name;
         this.damage = damage;
         this.magicDamage = magicDamage;
         this.delay = delay;
+        icon = new ImageIcon("./itemIcons/twin_knives.png");
     }
     public String getName() {
         return name;
@@ -24,5 +28,8 @@ public class Weapon {
     }
     public String toString() {
         return name;
+    }
+    public ImageIcon getIcon() {
+        return icon;
     }
 }
