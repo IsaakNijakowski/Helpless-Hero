@@ -4,15 +4,17 @@ public class Weapon {
     int damage;
     int magicDamage;
     int delay;
-    String description;
     ImageIcon icon;
+    String description;
+    
 
-    public Weapon(String name, int damage, int magicDamage, int delay) {
+    public Weapon(String name, int damage, int magicDamage, int delay, String iconLocation, String description) {
         this.name = name;
         this.damage = damage;
         this.magicDamage = magicDamage;
         this.delay = delay;
-        icon = new ImageIcon("./itemIcons/twin_knives.png");
+        icon = new ImageIcon(iconLocation);
+        this.description = description;
     }
     public String getName() {
         return name;
@@ -31,5 +33,8 @@ public class Weapon {
     }
     public ImageIcon getIcon() {
         return icon;
+    }
+    public String getDescription() {
+        return description;
     }
 }

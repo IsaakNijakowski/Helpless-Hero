@@ -132,16 +132,17 @@ public class GUI {
     JProgressBar rightDelayBar = new IBar("Delay", 200, 25, Color.green);
     JLabel rightDamageNumbers = new ILabel("-0", 20, true, Color.red);
     
-    int buttonSize = 100;
-    JButton weapon1 = new JButton(getPlaceHolderImage(buttonSize, buttonSize));
-    JButton weapon2 = new JButton(getPlaceHolderImage(buttonSize, buttonSize));
-    JButton weapon3 = new JButton(getPlaceHolderImage(buttonSize, buttonSize));
+    ImageIcon empty = new ImageIcon("./itemIcons/empty.png");
+    int buttonSize = 128;
+    JButton weapon1 = new JButton(empty);
+    JButton weapon2 = new JButton(empty);
+    JButton weapon3 = new JButton(empty);
     StackedPanel barPanel = new StackedPanel(0, 50, FlowLayout.CENTER);
     IBar expBar = new IBar("EXP", 125, 125/2, Color.blue);
     IBar progressBar = new IBar("PROGRESS", 125, 125/2, Color.orange);
-    JButton sheild1 = new JButton(getPlaceHolderImage(buttonSize, buttonSize));
-    JButton sheild2 = new JButton(getPlaceHolderImage(buttonSize, buttonSize));
-    JButton sheild3 = new JButton(getPlaceHolderImage(buttonSize, buttonSize));
+    JButton sheild1 = new JButton(empty);
+    JButton sheild2 = new JButton(empty);
+    JButton sheild3 = new JButton(empty);
 
     JPanel baseLeftPanel = new JPanel();
     JPanel baseRightPanel = new JPanel();
@@ -437,7 +438,7 @@ public class GUI {
 
         // LEVELUP PANEL
         levelPanel.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
-        levelPanel.setPreferredSize(new Dimension(612, 400));
+        levelPanel.setPreferredSize(new Dimension(612, 390));
         levelPanel.add(levelUpText);
 
         selectionDescription1.setText("If you see this text there was an error");
@@ -492,10 +493,10 @@ public class GUI {
     }
     public ArrayList<Weapon> initiateWeapons() {
         ArrayList<Weapon> weapons = new ArrayList<>();
-        weapons.add(new Weapon("Aguluzena Katana", 10, 0, 50));
-        weapons.add(new Weapon("Twin Knives", 5, 0, 50));
-        weapons.add(new Weapon("Silver Saber", 5, 0, 40));
-        weapons.add(new Weapon("Serated Blade", 10, 0, 75));
+        weapons.add(new Weapon("Aguluzena Katana", 10, 0, 50, "./itemIcons/aguluzena_katana.png", "Deals double damage if you cannot deal magic damage"));
+        weapons.add(new Weapon("Twin Knives", 5, 0, 50, "./itemIcons/twin_knives.png", "description"));
+        weapons.add(new Weapon("Silver Saber", 5, 0, 40, "./itemIcons/silver_saber.png", "description"));
+        weapons.add(new Weapon("Serated Blade", 10, 0, 75, "./itemIcons/serated_blade.png", "description"));
         return weapons;
     }
     public ArrayList<Shield> initiateSheilds() {
@@ -529,6 +530,22 @@ public class GUI {
         selectionTitle1.setText(selectList.get(0).getName());
         selectionTitle2.setText(selectList.get(1).getName());
         selectionTitle3.setText(selectList.get(2).getName());
+        selectionDescription1.setText(selectList.get(0).getDescription());
+        selectionDescription2.setText(selectList.get(1).getDescription());
+        selectionDescription3.setText(selectList.get(2).getDescription());
+        Image image1 = selectList.get(0).getIcon().getImage();
+        Image newimg1 = image1.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+        ImageIcon imageIcon1 = new ImageIcon(newimg1);
+        selectionButton1.setIcon(imageIcon1);
+        Image image2 = selectList.get(1).getIcon().getImage();
+        Image newimg2 = image2.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+        ImageIcon imageIcon2 = new ImageIcon(newimg2);
+        selectionButton2.setIcon(imageIcon2);
+        Image image3 = selectList.get(2).getIcon().getImage();
+        Image newimg3 = image3.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+        ImageIcon imageIcon3 = new ImageIcon(newimg3);
+        selectionButton3.setIcon(imageIcon3);
+
         baseRightPanel.remove(rightPanel);
         baseRightPanel.add(levelPanel);
         window.revalidate();
