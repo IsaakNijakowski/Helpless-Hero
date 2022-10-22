@@ -1,13 +1,13 @@
 package customTools;
 
-import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 import javax.swing.UIManager;
 
-public class WrapText extends JTextArea {
-    public WrapText(int rows, int columns) {
-        super(rows,columns);
-        super.setWrapStyleWord(true);
-        super.setLineWrap(true);
+public class SpecText extends JTextPane {
+    public SpecText() {
+        super();
+        //super.setWrapStyleWord(true);
+        //super.setLineWrap(true);
         super.setOpaque(false);
         super.setEditable(false);
         super.setFocusable(false);

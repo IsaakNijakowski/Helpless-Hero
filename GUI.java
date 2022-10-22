@@ -152,7 +152,7 @@ public class GUI {
 
     StackedPanel tutorialPanel = new StackedPanel(10, 10, FlowLayout.CENTER);
     ILabel tutorialTitle = new ILabel("Tutorial!", 20, true, Color.red);
-    JTextArea tutorialText = new WrapText(7, 50);
+    //JTextArea tutorialText = new WrapText(7, 50);
     JButton tutorialButton = new JButton("Continue");
 
     int rows = 2;
@@ -163,17 +163,17 @@ public class GUI {
     JButton selectionButton1 = new JButton(getPlaceHolderImage(100, 100));
     StackedPanel selectionTextPanel1 = new StackedPanel(0, 25, FlowLayout.LEFT);
     ILabel selectionTitle1 = new ILabel("Selection 1", 15, true, Color.darkGray);
-    WrapText selectionDescription1 = new WrapText(rows, columns);
+    SpecText selectionDescription1 = new SpecText();//----------------------------------------------------------------------------------------------------------------------
     JPanel selectionPanel2 = new JPanel();
     JButton selectionButton2 = new JButton(getPlaceHolderImage(100, 100));
     StackedPanel selectionTextPanel2 = new StackedPanel(0, 25, FlowLayout.LEFT);
     ILabel selectionTitle2 = new ILabel("Selection 2", 15, true, Color.darkGray);
-    WrapText selectionDescription2 = new WrapText(rows, columns);
+    SpecText selectionDescription2 = new SpecText();
     JPanel selectionPanel3 = new JPanel();
     JButton selectionButton3 = new JButton(getPlaceHolderImage(100, 100));
     StackedPanel selectionTextPanel3 = new StackedPanel(0, 25, FlowLayout.LEFT);
     ILabel selectionTitle3 = new ILabel("Selection 3", 15, true, Color.darkGray);
-    WrapText selectionDescription3 = new WrapText(rows, columns);
+    SpecText selectionDescription3 = new SpecText();
 
     
 
@@ -427,8 +427,8 @@ public class GUI {
         tutorialPanel.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
         tutorialPanel.setPreferredSize(new Dimension(612, 250));
         tutorialPanel.add(tutorialTitle);
-        tutorialText.setText("If you see this text there was an error");
-        tutorialPanel.add(tutorialText);
+        //tutorialText.setText("If you see this text there was an error");
+        //tutorialPanel.add(tutorialText);
         tutorialPanel.add(tutorialButton);
 
         tutorialButton.addActionListener(e -> {
@@ -499,6 +499,7 @@ public class GUI {
     }
     public ArrayList<Weapon> initiateWeapons() {
         ArrayList<Weapon> weapons = new ArrayList<>();
+        /*
         //Fast
         weapons.add(new Weapon("Aguluzena Katana", 10, 0, 50, "./itemIcons/aguluzena_katana.png", "If magic damage is less than 5, this weapon deals double damage."));
         weapons.add(new Weapon("Twin Knives", 5, 0, 50, "./itemIcons/twin_knives.png", "This weapon decreases delay of all weapons by 15."));
@@ -511,9 +512,10 @@ public class GUI {
         weapons.add(new Weapon("Flame Absorber", 5, 0, 50, "./itemIcons/flame_absorber.png", "For every 10 enemy armor, this weapon deals 5 bonus magic damage."));
         //Heavy
         weapons.add(new Weapon("Ilya Hammer", 15, 0, 150, "./itemIcons/ilya_hammer.png", "This weapons' damage increases by 5 and delay decreases by 5 for every enemy finished off with this weapon, stats are quintupled if this is the last weapon obtained."));
-        weapons.add(new Weapon("Sweeping Axe", 5, 0, 85, "./itemIcons/sweeping_axe.png", "This weapon deals 5 bonus damage for every 50 delay."));
-        weapons.add(new Weapon("Blast Cannon", 30, 0, 150, "./itemIcons/blast_cannon.png", "This weapon deals half of its damage to the user."));
-        weapons.add(new Weapon("Coiled Blade", 15, 0, 120, "./itemIcons/coiled_blade.png", "This weapon deals 15 bonus damage if the users max armor is at least 30."));
+        */
+        weapons.add(new Weapon("Sweeping Axe", 5, 0, 85, "./itemIcons/sweeping_axe.png", "This weapon\n deals 5 bonus damage for every 50 delay. test test test test ste tset set set set se tse tsetset"));
+        weapons.add(new Weapon("Blast Cannon", 30, 0, 150, "./itemIcons/blast_cannon.png", "This weapon\n deals half of its damage to the user. testetse ets tet set set se te tse tse ts ets et tet set es te ts et se tse tset"));
+        weapons.add(new Weapon("Coiled Blade", 15, 0, 120, "./itemIcons/coiled_blade.png", "This weapon\n deals 15 bonus damage if the users max armor is at least 30.mte tsetset set se tes ts et se tse tes ts et se te tse t set se t set"));
         
         return weapons;
     }
