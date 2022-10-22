@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 
 public class Player {
-    int health;
+    //max health
+    int health = 20;
+    //max armor
+    //armor
     ArrayList<Weapon> playerWeapons = new ArrayList<>();
     ArrayList<Shield> playerShields = new ArrayList<>();
     public Player() {}

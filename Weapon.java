@@ -6,6 +6,7 @@ public class Weapon {
     int delay;
     ImageIcon icon;
     String description;
+    //Player
     
 
     public Weapon(String name, int damage, int magicDamage, int delay, String iconLocation, String description) {
