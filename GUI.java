@@ -513,6 +513,7 @@ public class GUI {
         //Heavy
         weapons.add(new Weapon("Ilya Hammer", 15, 0, 150, "./itemIcons/ilya_hammer.png", "This weapons' damage increases by 5 and delay decreases by 5 for every enemy finished off with this weapon, stats are quintupled if this is the last weapon obtained."));
         */
+        // All other weapons are commented out so I can easily modify GUI styling
         weapons.add(new Weapon("Sweeping Axe", 5, 0, 85, "./itemIcons/sweeping_axe.png", "This weapon\n deals 5 bonus damage for every 50 delay. test test test test ste tset set set set se tse tsetset"));
         weapons.add(new Weapon("Blast Cannon", 30, 0, 150, "./itemIcons/blast_cannon.png", "This weapon\n deals half of its damage to the user. testetse ets tet set set se te tse tse ts ets et tet set es te ts et se tse tset"));
         weapons.add(new Weapon("Coiled Blade", 15, 0, 120, "./itemIcons/coiled_blade.png", "This weapon\n deals 15 bonus damage if the users max armor is at least 30.mte tsetset set se tes ts et se tse tes ts et se te tse t set se t set"));
@@ -528,8 +529,9 @@ public class GUI {
         return shields;
     }
     public void selectWeapon() {
-        ArrayList<Weapon> weaponCopy = (ArrayList<Weapon>) weaponList.clone();
-        ArrayList<Weapon> existList = (ArrayList<Weapon>) player.getPlayerWeapons().clone();
+        // These warnings can be unchecked. We do not control the type from ArrayList<> and I do not bother to overide its code
+        @SuppressWarnings("unchecked") ArrayList<Weapon> weaponCopy = (ArrayList<Weapon>) weaponList.clone();
+        @SuppressWarnings("unchecked") ArrayList<Weapon> existList = (ArrayList<Weapon>) player.getPlayerWeapons().clone();
         while (existList.size() > 0) {
             for (int i = 0; i < weaponCopy.size(); i++) {
                 for (int e = 0; e < existList.size(); e++) {
