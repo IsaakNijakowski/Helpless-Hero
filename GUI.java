@@ -181,6 +181,7 @@ public class GUI {
         // Window initialization
         window.setSize(1280, 720);
         window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        ToolTipManager.sharedInstance().setInitialDelay(0);
         // --
 
         // TITLE PANEL
@@ -478,6 +479,11 @@ public class GUI {
         imageIcon = new ImageIcon(newimg);
         return imageIcon;
     }
+    public Icon rescaleImage(int width, int height, Image image) {
+        Image newimg = image.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(newimg);
+        return imageIcon;
+    }
 
     public void startGame() {
         weaponList = initiateWeapons();
@@ -508,6 +514,7 @@ public class GUI {
         weapons.add(new Weapon("Sweeping Axe", 5, 0, 85, "./itemIcons/sweeping_axe.png", "This weapon deals 5 bonus damage for every 50 delay."));
         weapons.add(new Weapon("Blast Cannon", 30, 0, 150, "./itemIcons/blast_cannon.png", "This weapon deals half of its damage to the user."));
         weapons.add(new Weapon("Coiled Blade", 15, 0, 120, "./itemIcons/coiled_blade.png", "This weapon deals 15 bonus damage if the users max armor is at least 30."));
+        
         return weapons;
     }
     public ArrayList<Shield> initiateSheilds() {
@@ -544,18 +551,12 @@ public class GUI {
         selectionDescription1.setText(selectList.get(0).getDescription());
         selectionDescription2.setText(selectList.get(1).getDescription());
         selectionDescription3.setText(selectList.get(2).getDescription());
-        Image image1 = selectList.get(0).getIcon().getImage();
-        Image newimg1 = image1.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
-        ImageIcon imageIcon1 = new ImageIcon(newimg1);
-        selectionButton1.setIcon(imageIcon1);
-        Image image2 = selectList.get(1).getIcon().getImage();
-        Image newimg2 = image2.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
-        ImageIcon imageIcon2 = new ImageIcon(newimg2);
-        selectionButton2.setIcon(imageIcon2);
-        Image image3 = selectList.get(2).getIcon().getImage();
-        Image newimg3 = image3.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
-        ImageIcon imageIcon3 = new ImageIcon(newimg3);
-        selectionButton3.setIcon(imageIcon3);
+        selectionButton1.setIcon(rescaleImage(100, 100, selectList.get(0).getIcon().getImage()));
+        selectionButton2.setIcon(rescaleImage(100, 100, selectList.get(1).getIcon().getImage()));
+        selectionButton3.setIcon(rescaleImage(100, 100, selectList.get(2).getIcon().getImage()));
+        selectionButton1.setToolTipText("<html>Damage: "+selectList.get(0).getDamage()+"<br>Magic Damage: "+selectList.get(0).getMagicDamage()+"<br>Delay: "+selectList.get(0).getDelay()+"</html>");
+        selectionButton2.setToolTipText("<html>Damage: "+selectList.get(1).getDamage()+"<br>Magic Damage: "+selectList.get(1).getMagicDamage()+"<br>Delay: "+selectList.get(1).getDelay()+"</html>");
+        selectionButton3.setToolTipText("<html>Damage: "+selectList.get(2).getDamage()+"<br>Magic Damage: "+selectList.get(2).getMagicDamage()+"<br>Delay: "+selectList.get(2).getDelay()+"</html>");
 
         baseRightPanel.remove(rightPanel);
         baseRightPanel.add(levelPanel);
@@ -608,6 +609,11 @@ public class GUI {
 
 
     public static void main(String[] args) {
-        new GUI();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new GUI();
+            }
+        });
     }
 }

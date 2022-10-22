@@ -6,6 +6,7 @@ public class Weapon {
     int delay;
     ImageIcon icon;
     String description;
+    String hoverText;
     //Player
     
 
@@ -16,6 +17,7 @@ public class Weapon {
         this.delay = delay;
         icon = new ImageIcon(iconLocation);
         this.description = description;
+        hoverText = "<html>"+description+"</html>";
     }
     public String getName() {
         return name;
@@ -37,5 +39,8 @@ public class Weapon {
     }
     public String getDescription() {
         return description;
+    }
+    public String getHoverText() {
+        return hoverText;
     }
 }
