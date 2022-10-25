@@ -500,29 +500,29 @@ public class GUI {
     public ArrayList<Weapon> initiateWeapons() {
         ArrayList<Weapon> weapons = new ArrayList<>();
         //Fast
-        weapons.add(new Weapon("Aguluzena Katana", 10, 0, 50, "./itemIcons/aguluzena_katana.png", "If magic damage is less than 5, this weapon deals double damage."));
-        weapons.add(new Weapon("Twin Knives", 5, 0, 50, "./itemIcons/twin_knives.png", "This weapon decreases delay of all weapons by 15."));
-        weapons.add(new Weapon("Silver Saber", 5, 0, 40, "./itemIcons/silver_saber.png", "This weapon increases damage of all weapons by 5."));
-        weapons.add(new Weapon("Serated Blade", 10, 0, 75, "./itemIcons/serated_blade.png", "With each strike with this weapon, gain 2 armor."));
+        weapons.add(new Weapon(0, "Aguluzena Katana", 10, 0, 50, "./itemIcons/aguluzena_katana.png", "If magic damage is less than 5, this weapon deals double damage."));
+        weapons.add(new Weapon(1, "Twin Knives", 5, 0, 50, "./itemIcons/twin_knives.png", "This weapon decreases delay of all weapons by 15."));
+        weapons.add(new Weapon(2, "Silver Saber", 5, 0, 40, "./itemIcons/silver_saber.png", "This weapon increases damage of all weapons by 5."));
+        weapons.add(new Weapon(3, "Serated Blade", 10, 0, 75, "./itemIcons/serated_blade.png", "With each strike with this weapon, gain 2 armor."));
         //Magic
-        weapons.add(new Weapon("Glow Saber", 0, 25, 100, "./itemIcons/glow_saber.png", "This weapon cannot deal normal damage."));
-        weapons.add(new Weapon("Plasma Blade", 5, 15, 80, "./itemIcons/plasma_blade.png", "If the enemy has armor, hit the user with this weapon."));
-        weapons.add(new Weapon("Fireball", 5, 10, 90, "./itemIcons/fireball.png", "Magic damage increases by 2 per strike with this weapon. This bonus magic\ndamage resets after user or enemy is defeated."));
-        weapons.add(new Weapon("Flame Absorber", 5, 0, 50, "./itemIcons/flame_absorber.png", "For every 10 enemy armor, this weapon deals 5 bonus magic damage."));
+        weapons.add(new Weapon(4, "Glow Saber", 0, 25, 100, "./itemIcons/glow_saber.png", "This weapon cannot deal normal damage."));
+        weapons.add(new Weapon(5, "Plasma Blade", 5, 15, 80, "./itemIcons/plasma_blade.png", "If the enemy has armor, hit the user with this weapon."));
+        weapons.add(new Weapon(6, "Fireball", 5, 10, 90, "./itemIcons/fireball.png", "Magic damage increases by 2 per strike with this weapon. This bonus magic\ndamage resets after user or enemy is defeated."));
+        weapons.add(new Weapon(7, "Flame Absorber", 5, 0, 50, "./itemIcons/flame_absorber.png", "For every 10 enemy armor, this weapon deals 5 bonus magic damage."));
         //Heavy
-        weapons.add(new Weapon("Ilya Hammer", 15, 0, 150, "./itemIcons/ilya_hammer.png", "This weapons' damage increases by 5 and delay decreases by 5 for every enemy\nfinished off with this weapon, stats are quintupled if this is the last weapon obtained."));
-        weapons.add(new Weapon("Sweeping Axe", 5, 0, 85, "./itemIcons/sweeping_axe.png", "This weapon deals 5 bonus damage for every 50 delay."));
-        weapons.add(new Weapon("Blast Cannon", 30, 0, 150, "./itemIcons/blast_cannon.png", "This weapon deals half of its damage to the user."));
-        weapons.add(new Weapon("Coiled Blade", 15, 0, 120, "./itemIcons/coiled_blade.png", "This weapon deals 15 bonus damage if the users max armor is at least 30."));
-        
+        weapons.add(new Weapon(8, "Ilya Hammer", 15, 0, 150, "./itemIcons/ilya_hammer.png", "This weapons' damage increases by 5 and delay decreases by 5 for every enemy\nfinished off with this weapon, stats are quintupled if this is the last weapon obtained."));
+        weapons.add(new Weapon(9, "Sweeping Axe", 5, 0, 85, "./itemIcons/sweeping_axe.png", "This weapon deals 5 bonus damage for every 50 delay."));
+        weapons.add(new Weapon(10, "Blast Cannon", 30, 0, 150, "./itemIcons/blast_cannon.png", "This weapon deals half of its damage to the user."));
+        weapons.add(new Weapon(11, "Coiled Blade", 15, 0, 120, "./itemIcons/coiled_blade.png", "This weapon deals 15 bonus damage if the users max armor is at least 30."));
+        System.out.println(weapons.size());
         return weapons;
     }
     public ArrayList<Shield> initiateSheilds() {
         ArrayList<Shield> shields = new ArrayList<>();
-        shields.add(new Shield("Swift Satchel", 5));
-        shields.add(new Shield("Infused Wrist Sleeve", 5));
-        shields.add(new Shield("Reinforced Bracer", 5));
-        shields.add(new Shield("Spinning Guard", 5));
+        shields.add(new Shield(0, "Swift Satchel", 5));
+        shields.add(new Shield(1, "Infused Wrist Sleeve", 5));
+        shields.add(new Shield(2, "Reinforced Bracer", 5));
+        shields.add(new Shield(3, "Spinning Guard", 5));
         return shields;
     }
     public void selectWeapon() {
