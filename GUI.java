@@ -499,7 +499,6 @@ public class GUI {
     }
     public ArrayList<Weapon> initiateWeapons() {
         ArrayList<Weapon> weapons = new ArrayList<>();
-        /*
         //Fast
         weapons.add(new Weapon("Aguluzena Katana", 10, 0, 50, "./itemIcons/aguluzena_katana.png", "If magic damage is less than 5, this weapon deals double damage."));
         weapons.add(new Weapon("Twin Knives", 5, 0, 50, "./itemIcons/twin_knives.png", "This weapon decreases delay of all weapons by 15."));
@@ -508,15 +507,13 @@ public class GUI {
         //Magic
         weapons.add(new Weapon("Glow Saber", 0, 25, 100, "./itemIcons/glow_saber.png", "This weapon cannot deal normal damage."));
         weapons.add(new Weapon("Plasma Blade", 5, 15, 80, "./itemIcons/plasma_blade.png", "If the enemy has armor, hit the user with this weapon."));
-        weapons.add(new Weapon("Fireball", 5, 10, 90, "./itemIcons/fireball.png", "Magic damage increases by 2 per strike with this weapon. This bonus magic damage resets after user or enemy is defeated."));
+        weapons.add(new Weapon("Fireball", 5, 10, 90, "./itemIcons/fireball.png", "Magic damage increases by 2 per strike with this weapon. This bonus magic\ndamage resets after user or enemy is defeated."));
         weapons.add(new Weapon("Flame Absorber", 5, 0, 50, "./itemIcons/flame_absorber.png", "For every 10 enemy armor, this weapon deals 5 bonus magic damage."));
         //Heavy
-        weapons.add(new Weapon("Ilya Hammer", 15, 0, 150, "./itemIcons/ilya_hammer.png", "This weapons' damage increases by 5 and delay decreases by 5 for every enemy finished off with this weapon, stats are quintupled if this is the last weapon obtained."));
-        */
-        // All other weapons are commented out so I can easily modify GUI styling
-        weapons.add(new Weapon("Sweeping Axe", 5, 0, 85, "./itemIcons/sweeping_axe.png", "This weapon\n deals 5 bonus damage for every 50 delay. test test test test ste tset set set set se tse tsetset"));
-        weapons.add(new Weapon("Blast Cannon", 30, 0, 150, "./itemIcons/blast_cannon.png", "This weapon\n deals half of its damage to the user. testetse ets tet set set se te tse tse ts ets et tet set es te ts et se tse tset"));
-        weapons.add(new Weapon("Coiled Blade", 15, 0, 120, "./itemIcons/coiled_blade.png", "This weapon\n deals 15 bonus damage if the users max armor is at least 30.mte tsetset set se tes ts et se tse tes ts et se te tse t set se t set"));
+        weapons.add(new Weapon("Ilya Hammer", 15, 0, 150, "./itemIcons/ilya_hammer.png", "This weapons' damage increases by 5 and delay decreases by 5 for every enemy\nfinished off with this weapon, stats are quintupled if this is the last weapon obtained."));
+        weapons.add(new Weapon("Sweeping Axe", 5, 0, 85, "./itemIcons/sweeping_axe.png", "This weapon deals 5 bonus damage for every 50 delay."));
+        weapons.add(new Weapon("Blast Cannon", 30, 0, 150, "./itemIcons/blast_cannon.png", "This weapon deals half of its damage to the user."));
+        weapons.add(new Weapon("Coiled Blade", 15, 0, 120, "./itemIcons/coiled_blade.png", "This weapon deals 15 bonus damage if the users max armor is at least 30."));
         
         return weapons;
     }
@@ -552,15 +549,15 @@ public class GUI {
         selectionTitle1.setText(selectList.get(0).getName());
         selectionTitle2.setText(selectList.get(1).getName());
         selectionTitle3.setText(selectList.get(2).getName());
-        selectionDescription1.setText(selectList.get(0).getDescription());
-        selectionDescription2.setText(selectList.get(1).getDescription());
-        selectionDescription3.setText(selectList.get(2).getDescription());
+        selectionDescription1.setText("Damage: "+selectList.get(0).getDamage()+"\nMagic: "+selectList.get(0).getMagicDamage()+"\nDelay: "+selectList.get(0).getDelay()+"\n"+selectList.get(0).getDescription());
+        selectionDescription2.setText("Damage: "+selectList.get(1).getDamage()+"\nMagic: "+selectList.get(1).getMagicDamage()+"\nDelay: "+selectList.get(1).getDelay()+"\n"+selectList.get(1).getDescription());
+        selectionDescription3.setText("Damage: "+selectList.get(2).getDamage()+"\nMagic: "+selectList.get(2).getMagicDamage()+"\nDelay: "+selectList.get(2).getDelay()+"\n"+selectList.get(2).getDescription());
         selectionButton1.setIcon(rescaleImage(100, 100, selectList.get(0).getIcon().getImage()));
         selectionButton2.setIcon(rescaleImage(100, 100, selectList.get(1).getIcon().getImage()));
         selectionButton3.setIcon(rescaleImage(100, 100, selectList.get(2).getIcon().getImage()));
-        selectionButton1.setToolTipText("<html>Damage: "+selectList.get(0).getDamage()+"<br>Magic Damage: "+selectList.get(0).getMagicDamage()+"<br>Delay: "+selectList.get(0).getDelay()+"</html>");
-        selectionButton2.setToolTipText("<html>Damage: "+selectList.get(1).getDamage()+"<br>Magic Damage: "+selectList.get(1).getMagicDamage()+"<br>Delay: "+selectList.get(1).getDelay()+"</html>");
-        selectionButton3.setToolTipText("<html>Damage: "+selectList.get(2).getDamage()+"<br>Magic Damage: "+selectList.get(2).getMagicDamage()+"<br>Delay: "+selectList.get(2).getDelay()+"</html>");
+        //selectionButton1.setToolTipText("<html>Damage: "+selectList.get(0).getDamage()+"<br>Magic Damage: "+selectList.get(0).getMagicDamage()+"<br>Delay: "+selectList.get(0).getDelay()+"</html>");
+        //selectionButton2.setToolTipText("<html>Damage: "+selectList.get(1).getDamage()+"<br>Magic Damage: "+selectList.get(1).getMagicDamage()+"<br>Delay: "+selectList.get(1).getDelay()+"</html>");
+        //selectionButton3.setToolTipText("<html>Damage: "+selectList.get(2).getDamage()+"<br>Magic Damage: "+selectList.get(2).getMagicDamage()+"<br>Delay: "+selectList.get(2).getDelay()+"</html>");
 
         baseRightPanel.remove(rightPanel);
         baseRightPanel.add(levelPanel);
@@ -594,6 +591,7 @@ public class GUI {
         switch (weaponCount) {
             case(1):
             weapon1.setIcon(player.getPlayerWeapons().get(0).getIcon());
+            weapon1.setToolTipText("<html>"+player.getPlayerWeapons().get(0).getName()+"<br>"+player.getPlayerWeapons().get(0).getDamage()+" - "+player.getPlayerWeapons().get(0).getMagicDamage()+" - "+player.getPlayerWeapons().get(0).getDelay()+"<br>"+player.getPlayerWeapons().get(0).getHTMLDescription()+"</html>");
             break;
             case(2):
             weapon2.setIcon(player.getPlayerWeapons().get(1).getIcon());
